@@ -13,13 +13,20 @@ router.get('/api/user/:id', async ctx => {
         .where('id', ctx.params.id)
         .first()
         .then((user) => {
-            return ctx.body = user;
+            if(user) {
+                return ctx.body = user;
+            }
         })
         .catch((ctx) => {
+            console.log(ctx, ' CTX');
             ctx.status = error.status || 500;
             ctx.body = { error: error.message || "Oh No! Something went wrong! " };
             ctx.app.emit('error', error, ctx);
         });
+    if(!user) {
+        return ctx.throw(400, 'User not found!');
+    }
+    return user;
 });
 
 // endpoint for signing in to the app
