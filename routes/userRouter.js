@@ -4,10 +4,8 @@ const router = new Router();
 const knex = require('../knex/knex.js');
 
 // TODO: add auth
-router.get('/user/:id', async ctx => {
-    console.log(ctx.params, ' this params');
+router.get('/api/user/:id', async ctx => {
     const user = await knex('users')
-        // .select('*')
         .select({
             id: 'id',
             email: 'email'
@@ -15,11 +13,9 @@ router.get('/user/:id', async ctx => {
         .where('id', ctx.params.id)
         .first()
         .then((user) => {
-            console.log(user , 'RES');
             return ctx.body = user;
         })
         .catch((ctx) => {
-            console.log(ctx, ' ctx');
             ctx.status = error.status || 500;
             ctx.body = { error: error.message || "Oh No! Something went wrong! " };
             ctx.app.emit('error', error, ctx);
@@ -27,10 +23,8 @@ router.get('/user/:id', async ctx => {
 });
 
 // endpoint for signing in to the app
-router.post('/signin', async ctx => {
-    console.log(ctx.request.body, ' this params');
+router.post('/api/signin', async ctx => {
     // convert password to hash and compare to password in DB
-
     // check if user exists
     const result = await knex('users')
     .select('*')
@@ -41,7 +35,6 @@ router.post('/signin', async ctx => {
     .then((user) => {
         console.log(user , 'RES USER');
         return user;
-        // return ctx.body = users;
     })
     .catch((err) => {
         // TODO: have a single ERROR catch here
