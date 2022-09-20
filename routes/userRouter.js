@@ -37,7 +37,7 @@ router.post('/api/user/signin', async ctx => {
     const result = await knex('users')
     .select('*')
     .where({
-        'email' : ctx.request.body.username
+        'email' : ctx.request.body.email
     })
     .first()
     .then((user) => {
@@ -49,7 +49,7 @@ router.post('/api/user/signin', async ctx => {
         console.error(err, ' eerrrrrrrrrrrrr');
     });
 
-    // IF username is incorrect, throw 400
+    // IF email is incorrect, throw 400
     if(!result) {
         return ctx.throw(400, 'Email not found');
     };
