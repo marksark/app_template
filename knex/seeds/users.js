@@ -1,7 +1,7 @@
 const argon2 = require('argon2');
 
 const pwdRaw = process.env.SEED_PWD || 'testing1234';
-const hashPwd = async (password) => argon2.hash(password);
+const hashPwd = (password) => argon2.hash(password);
 
 exports.seed = async function(knex) {
   // Deletes ALL existing entries
