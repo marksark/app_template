@@ -3,6 +3,7 @@
 ## TODO:
 
 - containerize app
+- add SASS + styles
 - add jest unit tests
 - add husky + prettier hooks
 - have fun with the frontend

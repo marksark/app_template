@@ -4,6 +4,7 @@
   "description": "template for full stack js app",
   "main": "index.js",
   "scripts": {
+    "build": "cd client && npm run build && cd ..",
     "migrate": "npx knex migrate:latest",
     "seed": "npx knex seed:run",
     "refresh": "npx knex migrate:rollback && npx knex migrate:latest",
