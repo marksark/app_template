@@ -6,6 +6,7 @@ const app = new koa();
 const router = new Router();
 const bodyParser = require('koa-body');
 const logger = require('koa-logger');
+const errorHandler = require('./middleware/errorHandler.js');
 const serveReactApp = require('./middleware/serveReactApp.js');
 
 
@@ -27,6 +28,7 @@ app.use(bodyParser({ textLimit: '30mb' }));
 app.use(logger());
 
 // middleware
+app.use(errorHandler);
 
 
 // routes
