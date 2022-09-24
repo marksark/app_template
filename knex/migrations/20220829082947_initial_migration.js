@@ -1,4 +1,5 @@
 exports.up = function(knex, Promise) {
+    // create any other tables you want to start a new app
     return knex.schema.createTable('users', function(table) {
         table.increments();
         table.string('email').unique().notNullable();
