@@ -11,7 +11,7 @@ services:
             POSTGRES_HOST_AUTH_METHOD: 'trust'
         volumes:
             - ./pgdata:/var/lib/postgresql/data
-            # execute sql files in specific order using #-fileName syntax when creating new DB
+            # execute sql files in specific order using #-fileName syntax when creating new DB - examples below
             # - ./src/database/initDb.sql:/docker-entrypoint-initdb.d/0-initDb.sql
             # - ./src/database/addData.sql:/docker-entrypoint-initdb.d/1-addData.sql
             # - ./src/database/addAttributes.sql:/docker-entrypoint-initdb.d/2-addAttributesdData.sql
@@ -22,6 +22,8 @@ services:
         # build: './'
         # for local development uncomment below and change ports to "3000:3000"
         # you will also need to change Dockerfile to expose 3000 and script to `npm run dev`
+        # ^  npm run start instead of npm run dev? also check chokidar_usepolling = true for local react dev work
+        # https://stackoverflow.com/questions/44643045/running-development-server-with-create-react-app-inside-of-a-docker-container
         volumes:
             - ./client:/app/client
             - ./client/node_modules:/app/client/node_modules
