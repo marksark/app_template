@@ -58,13 +58,10 @@ app.use(userRouter.routes());
 app.use(serveReactApp());
 app.use(router.allowedMethods());
 
+// get data from env vars for port & env
 const PORT = process.env.PORT ? process.env.PORT : 3001;
-
 const env = process.env.NODE_ENV || 'development';
-console.log(env, ' ENV');
-
-// TODO: serve react app
 
 app.listen(PORT, () => {
-    console.log(`listening on ${PORT}...`);
+    console.log(`listening on ${PORT} on ${env}`);
 });
