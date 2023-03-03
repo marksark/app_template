@@ -14,7 +14,7 @@ export default function Dashboard() {
     { label: "Everyone", content: "Everyone" },
     { label: "Students", content: "Students" },
     { label: "Parents", content: "Parents" },
-    { label: "C. Members", content: "Community Members" }
+    { label: "Community Members", content: "Community Members" }
   ]
 
   const _handleTabChange = (e, newValue) => {
